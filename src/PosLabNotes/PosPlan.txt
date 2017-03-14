@@ -1,0 +1,52 @@
+
+Product
+--------
+Double retialPrice
+String id 
+String name
+Discount Strategy discount  
+
+
+Line Item
+----------
+Product product;
+int qty
+(subtotal is calculated)
+
+
+Receipt
+--------
+Customer customer 
+String receiptId
+Double grandTotal (can be calculated) 
+LineItem[] lineitem 
+Date Transaction Date
+
+
+
+Conceptual Nouns. 
+-----------------
+
+DiscountStrategy 
+----------------
+No Discount
+Percent Discount
+Qty Discount
+
+Receipt 
+-------
+JOption Pane Receipt 
+Detailed Format Rceipt 
+Print Format Receipt 
+Web Format Receipt 
+
+
+   
+
+
+
+
+
+
+
+

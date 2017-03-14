@@ -1,0 +1,117 @@
+Here's a samle of the receipt:
+
+Thank you for shopping at Kohls!
+
+Sold to: Sally Jones
+Date of Sale: 3/9/2017 09:44 PM
+Receipt No.: 2
+
+ID    Item            Price    Qty    Subtotal    Discount
+------------------------------------------------------------------------
+C222    Women's Socks        $9.50    4    $38.00        $0.00
+B205    Men's Dress Shirt    $35.50    6    $213.00        $31.95
+
+                                --------
+                        Net Total:     $251.00
+                        Total Saved:     -$31.95
+                        Total Due:     $219.05
+
+
+New Way to Add Item to An Existing Array:
+
+private void addToArray(final LineItem item) {
+        // needs validation
+        LineItem[] tempItems = new LineItem[lineItems.length + 1];
+        System.arraycopy(lineItems, 0, tempItems, 0, lineItems.length);
+        tempItems[lineItems.length] = item;
+        lineItems = tempItems;
+        tempItems = null;
+    }
+
+
+Old Fashion Way:
+
+public void addItemToArray(LineItem item) {
+    LineItem[] temp = new LineItem[lineItems.length() + 1];
+    for(int i=0; i < lineItems.length(); i++) {
+        temp[i] = lineItems[i];
+    }
+    temp[temp.length() - 1] = item;
+    lineItems = temp;
+    temp = null;
+}
+
+
+Fake Database:
+
+public class InMemoryDataAccess implements ReceiptDataAccessStrategy {
+    private Customer[] customers = {
+        new Customer("100", "John Smith"),
+        new Customer("200", "Sally Jones"),
+        new Customer("300", "Bob Clementi")
+    };
+    
+    
+//    private Product[] products = {
+//        new Product("A101", "MLB Brewer's Hat ", 19.95, new PercentOffDiscount(0.15)),
+//        new Product("B205", "Men's Dress Shirt", 35.50, new QtyDiscount(.10,5)),
+//        new Product("C222", "Women's Socks    ", 9.50, new NoDiscount())
+//    };
+
+    
+    private Product[] products = {
+        new Product("A101", "MLB Brewer's Hat ", 19.95, new PercentOffDiscount(0.15)),
+        new Product("B205", "Men's Dress Shirt", 35.50, new QtyDiscount(0.15,5)),
+        new Product("C222", "Women's Socks    ", 9.50, new NoDiscount())
+    };
+    
+    /**
+     * Tries to find a Customer by customer id.
+     * @param custId - must not be null or empty
+     * @return found Customer or null if not found or bad argument
+     */
+    @Override
+    public final Customer findCustomer(final String custId) {
+        // validation is needed for method parameter
+        if(custId == null || custId.length() == 0) {
+            System.out.println("Sorry, FakeDatabase.findCustomer method has "
+                    + "illegal argument");
+            return null;  // end method prematurely after log to console
+        }
+        
+        Customer customer = null;
+        for(Customer c : customers) {
+            if(custId.equals(c.getCustId())) {
+                customer = c;
+                break;
+            }
+        }
+        
+        return customer;
+    }
+    
+    /**
+     * Tries to find a Proudct by product id.
+     * @param prodId - must not be null or empty
+     * @return found Product or null if not found or bad argument
+     */
+    @Override
+    public final Product findProduct(final String prodId) {
+        // validation is needed for method parameter
+        if(prodId == null || prodId.length() == 0) {
+            System.out.println("Sorry, FakeDatabase.findProduct method has "
+                    + "illegal argument");
+            return null;  // end method prematurely after log to console
+        }
+        
+        Product product = null;
+        for(Product p : products) {
+            if(prodId.equals(p.getProdId())) {
+                product = p;
+                break;
+            }
+        }
+        
+        return product;
+    }
+}
