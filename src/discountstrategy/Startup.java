@@ -22,6 +22,8 @@ public class Startup {
         posTerminal.addLineItemToSale("A222", 1 );
         posTerminal.endSale();
         
+        
+        
     }
    
 }
