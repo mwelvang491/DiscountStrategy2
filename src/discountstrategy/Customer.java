@@ -9,7 +9,7 @@ package discountstrategy;
  *
  * @author Mitch W
  */
-class Customer {
+public class Customer {
     private String custId;
     private String name;
     
@@ -23,7 +23,13 @@ class Customer {
     }
 
     public final void setCustId(String custId) {
-        this.custId = custId;
+        if(name == null || name.length() < 0 || name.length() > 500){
+       //throws exception.
+        }  else{
+         this.custId = custId;
+        }
+     
+        
     }
     
     public final String getName() {
@@ -31,7 +37,12 @@ class Customer {
     }
 
     public final void setName(String name) {
-        this.name = name;
+     if(name == null || name.length() < 0 || name.length() > 500){
+       //throws exception.
+     }else{
+         this.name = name;
+     }
+     
     }
     
     

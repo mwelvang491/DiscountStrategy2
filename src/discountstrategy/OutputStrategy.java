@@ -7,9 +7,10 @@ package discountstrategy;
 
 /**
  *
- * @author Mitch W
+ * @author mitchell
  */
-interface ReceiptDataAccessStrategy {
-    public abstract Customer findCustomer(final String custId);
-    public abstract Product findProduct(final String prodId);  
+public interface OutputStrategy {
+    
+    public void handleOutput(String msg);
+  
 }

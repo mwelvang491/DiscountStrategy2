@@ -8,8 +8,8 @@ Receipt No.: 2
 
 ID    Item            Price    Qty    Subtotal    Discount
 ------------------------------------------------------------------------
-C222    Women's Socks        $9.50    4    $38.00        $0.00
-B205    Men's Dress Shirt    $35.50    6    $213.00        $31.95
+C222 Women's Socks    $9.50     4       $38.00       $0.00
+B205 Men's Dress Shirt $35.50   6       $213.00      $31.95
 
                                 --------
                         Net Total:     $251.00

@@ -9,21 +9,21 @@ package discountstrategy;
  *
  * @author Mitch W
  */
-class PercentOffDiscount implements DiscountStrategy {
-    private double discount;
+public class PercentOffDiscount implements DiscountStrategy {
+    private double discountRate;
      
-    public PercentOffDiscount(double discount) {
-      setDiscount(discount);  
+    public PercentOffDiscount(double discountRate) {
+      setDiscountRate(discountRate);  
     }
 
     @Override
-    public final double getDiscount() {
-        return discount;
+    public final double getDiscount(int qty, double price) {
+        return price * qty * discountRate;
     }
 
     @Override
-    public final void setDiscount(double discount) {
-        this.discount = discount;
+    public final void setDiscountRate(double discountRate) {
+        this.discountRate = discountRate;
     }
     
  

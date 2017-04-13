@@ -9,11 +9,13 @@ package discountstrategy;
  *
  * @author Mitch W
  */
-public class InMemoryDataAccess implements ReceiptDataAccessStrategy {
+public class InMemoryDataAccess implements DataAccessStrategy {
+ 
+    
     private Customer[] customers = {
         new Customer("100", "John Smith"),
         new Customer("200", "Sally Jones"),
-        new Customer("300", "Bob Clementi")
+        new Customer("300", "Bob Clements")
     };
     
     
@@ -39,8 +41,7 @@ public class InMemoryDataAccess implements ReceiptDataAccessStrategy {
     public final Customer findCustomer(final String custId) {
         // validation is needed for method parameter
         if(custId == null || custId.length() == 0) {
-            System.out.println("Sorry, FakeDatabase.findCustomer method has "
-                    + "illegal argument");
+        System.out.println("Sorry, FakeDatabase.findCustomer method has " + "illegal argument");
             return null;  // end method prematurely after log to console
         }
         
@@ -63,6 +64,7 @@ public class InMemoryDataAccess implements ReceiptDataAccessStrategy {
     @Override
     public final Product findProduct(final String prodId) {
         // validation is needed for method parameter
+        
         if(prodId == null || prodId.length() == 0) {
             System.out.println("Sorry, FakeDatabase.findProduct method has "
                     + "illegal argument");

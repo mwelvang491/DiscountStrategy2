@@ -11,16 +11,29 @@ package discountstrategy;
  */
 class QtyDiscount implements DiscountStrategy {
     double discount;
-    public QtyDiscount(double d, int i) {
+    int quantity;
+    
+    public QtyDiscount(double discount, int quantity) {
+        setQuantity(quantity);
+        setDiscountRate(discount);
     }
 
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    
     @Override
     public final double getDiscount() {
         return discount;
     }
 
     @Override
-    public final void setDiscount(double discount) {
+    public final void setDiscountRate(double discount) {
         this.discount = discount;
     }
     

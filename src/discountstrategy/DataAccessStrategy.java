@@ -9,12 +9,8 @@ package discountstrategy;
  *
  * @author Mitch W
  */
-public interface DiscountStrategy {
-    
-    public double getDiscount(int qty, double price);
+interface DataAccessStrategy {
+    public abstract Customer findCustomer(final String custId);
+    public abstract Product findProduct(final String prodId);  
 
-    public void setDiscountRate(double discount);
-
-        
-  
 }

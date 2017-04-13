@@ -11,19 +11,21 @@ package discountstrategy;
  */
 public class Startup {
     public static void main(String[] args) {
-        
+        String storeGreeting = "Thank You For Shopping at Kohls";
         PosTerminal posTerminal = new PosTerminal();
-               
-        posTerminal.startSaleWithOutCustomerId();
-        posTerminal.addLineItemToSale("A222", 2 );
+        DataAccessStrategy dataAccessStrat = new InMemoryDataAccess();
+         
+        posTerminal.startSale("200", dataAccessStrat );
+        posTerminal.addItemToSale("C222", 4);
+        posTerminal.addItemToSale("B205", 6);
         posTerminal.endSale();
         
-        posTerminal.startSaleWithCusomterId("200");
-        posTerminal.addLineItemToSale("A222", 1 );
+        
+        posTerminal.startSale(null, dataAccessStrat );
+        posTerminal.addItemToSale("C222", 4);
+        posTerminal.addItemToSale("B5", 6);
         posTerminal.endSale();
-        
-        
-        
+             
     }
    
 }

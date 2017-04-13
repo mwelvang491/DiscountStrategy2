@@ -10,25 +10,33 @@ package discountstrategy;
  * @author Mitch W
  */
 public class PosTerminal {
-     
     
-    void startSaleWithOutCustomerId() {
-       
+    private Receipt receipt;
+    private int receiptNumber=0;
+    private OutputStrategy outputToConsole = new ConsoleOutputStrategy();
+    
+    public final void startSale(String customerId, DataAccessStrategy dataAccessStrat) {
+        // needs validation
+        receipt = new Receipt(customerId, dataAccessStrat, receiptNumber);
     }
 
-    void startSaleWithCusomterId(String customerId) {
-       
+    public final void addItemToSale(String productId, int qty) {
+        // needs validation
+        receipt.addLineItemToReceipt(productId, qty);
     }
 
-    void addLineItemToSale(String productId, int qty) {
-      ReceiptDataAccessStrategy accessStrategy = new  InMemoryDataAccess();
-      
-      LineItem lineItem = new LineItem( accessStrategy.findProduct(productId) , qty);
-      
+    public final void endSale() {
+        //Temporary. Needs Work. 
+        //Create A New Inteface With SubClasses To Output. 
+        incrementReceiptNumber();
+        receipt.setReceiptNumber( receiptNumber );
+        receipt.prepareReceiptForOutput();
+        outputToConsole.handleOutput(receipt.getReceipt());
+        
     }
-
-    void endSale() {
-     
-    }
+    
+       public final void incrementReceiptNumber(){
+       receiptNumber++;
+       }
  
 }

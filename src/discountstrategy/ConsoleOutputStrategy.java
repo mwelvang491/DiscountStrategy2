@@ -7,14 +7,15 @@ package discountstrategy;
 
 /**
  *
- * @author Mitch W
+ * @author mitchell
  */
-public interface DiscountStrategy {
+public class ConsoleOutputStrategy implements OutputStrategy{
     
-    public double getDiscount(int qty, double price);
-
-    public void setDiscountRate(double discount);
-
-        
-  
+     @Override
+     public final void handleOutput(String msg){
+     System.out.println(msg);
+    }
+    
+ 
 }
+
